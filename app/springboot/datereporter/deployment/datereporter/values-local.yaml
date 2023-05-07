@@ -1,0 +1,10 @@
+image:
+  tag: "latest"
+env:
+  - name: ENVIRONMENT
+    value: blue
+
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 3
