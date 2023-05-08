@@ -5,6 +5,7 @@ CHARTS := \
 			istio-gateway \
 			flagger \
 			grafana \
+			kiali \
 			prometheus
 
 build:

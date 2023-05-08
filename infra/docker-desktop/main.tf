@@ -1,3 +1,21 @@
+resource "kubernetes_namespace" "datereporter_dev" {
+  metadata {
+    name = "datereporter-dev"
+    labels = {
+      istio-injection = var.istio_sidecar
+    }
+  }
+}
+
+resource "kubernetes_namespace" "platform" {
+  metadata {
+    name = "platform"
+    labels = {
+      istio-injection = var.istio_sidecar
+    }
+  }
+}
+
 module "istio" {
   source          = "../modules/istio"
   enabled         = var.istio_enabled
@@ -8,25 +26,6 @@ module "istio" {
   istiod_values   = var.istio_istiod_values
   istiod_chart    = var.istio_istiod_chart
   gateway_chart   = var.istio_gateway_chart
-}
-
-resource "kubernetes_namespace" "datereporter_dev" {
-  metadata {
-    name = "datereporter-dev"
-    labels = {
-      istio-injection = var.istio_sidecar
-    }
-  }
-}
-
-
-resource "kubernetes_namespace" "platform" {
-  metadata {
-    name = "platform"
-    labels = {
-      istio-injection = var.istio_sidecar
-    }
-  }
 }
 
 module "prometheus" {
@@ -53,4 +52,13 @@ module "grafana" {
   chart      = var.grafana_chart
   namespace  = kubernetes_namespace.platform.metadata[0].name
   depends_on = [module.prometheus]
+}
+
+module "kiali" {
+  source     = "../modules/kiali"
+  enabled    = var.kiali_enabled
+  values     = var.kiali_values
+  chart      = var.kiali_chart
+  namespace  = kubernetes_namespace.platform.metadata[0].name
+  depends_on = [module.istio]
 }

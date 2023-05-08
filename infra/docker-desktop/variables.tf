@@ -53,6 +53,19 @@ variable "grafana_chart" {
   default = null
 }
 
+### Kiali ###
+variable "kiali_enabled" {
+  default = false
+}
+
+variable "kiali_values" {
+  default = null
+}
+
+variable "kiali_chart" {
+  default = null
+}
+
 ### Prometheus ###
 variable "prometheus_enabled" {
   default = false

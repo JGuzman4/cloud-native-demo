@@ -1,0 +1,9 @@
+apiVersion: v2
+name: kiali
+description: A Helm chart for kiali
+version: 0.1.0
+
+dependencies:
+  - name: kiali-server
+    version: "1.67.0"
+    repository: "https://kiali.org/helm-charts"
