@@ -1,0 +1,9 @@
+apiVersion: v2
+name: istiod
+description: A Helm chart for Istio mesh
+version: 0.1.0
+
+dependencies:
+  - name: istiod
+    version: "1.17.2"
+    repository: "https://istio-release.storage.googleapis.com/charts"

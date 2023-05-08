@@ -1,6 +1,7 @@
 apiVersion: v2
-name: istio
+name: base
 description: A Helm chart for Istio mesh
+version: 0.1.0
 
 dependencies:
   - name: base

@@ -86,3 +86,7 @@ env: []
 tolerations: []
 
 affinity: {}
+
+istio:
+  enabled: false
+  hosts: []

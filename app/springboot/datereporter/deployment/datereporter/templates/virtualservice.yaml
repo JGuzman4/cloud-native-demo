@@ -1,0 +1,23 @@
+{{- if .Values.istio.enabled }}
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: {{ include "datereporter.fullname" . }}-vs
+spec:
+  {{- with .Values.istio.hosts }}
+  hosts:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  gateways:
+  - {{ include "datereporter.fullname" . }}
+  http:
+    - name: {{ include "datereporter.fullname" . }}
+      match:
+        - uri:
+            prefix: "/"
+      route:
+        - destination:
+            host: {{ include "datereporter.fullname" . }}
+            port:
+              number: {{ .Values.service.port }}
+{{- end }}

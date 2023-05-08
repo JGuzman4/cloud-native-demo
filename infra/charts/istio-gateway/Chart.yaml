@@ -1,0 +1,9 @@
+apiVersion: v2
+name: gateway
+description: A Helm chart for Istio mesh
+version: 0.1.0
+
+dependencies:
+  - name: gateway
+    version: "1.17.2"
+    repository: "https://istio-release.storage.googleapis.com/charts"

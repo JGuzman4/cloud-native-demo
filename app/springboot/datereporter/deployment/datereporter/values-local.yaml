@@ -8,3 +8,8 @@ autoscaling:
   enabled: true
   minReplicas: 1
   maxReplicas: 3
+
+istio:
+  enabled: true
+  hosts:
+    - datereporter.local.domain
