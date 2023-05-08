@@ -45,3 +45,12 @@ module "flagger" {
   chart      = var.flagger_chart
   depends_on = [module.prometheus]
 }
+
+module "grafana" {
+  source     = "../modules/grafana"
+  enabled    = var.grafana_enabled
+  values     = var.grafana_values
+  chart      = var.grafana_chart
+  namespace  = kubernetes_namespace.platform.metadata[0].name
+  depends_on = [module.prometheus]
+}

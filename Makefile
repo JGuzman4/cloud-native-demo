@@ -4,6 +4,7 @@ CHARTS := \
 			istio-istiod \
 			istio-gateway \
 			flagger \
+			grafana \
 			prometheus
 
 build:
@@ -11,22 +12,22 @@ build:
 	./gradlew clean build ; \
 	docker build -t $(APPNAME) .
 
-install-local:
+install-docker-desktop:
 	helm upgrade -i \
 		-n datereporter-dev \
 		$(APPNAME) app/springboot/$(APPNAME)/deployment/$(APPNAME) \
-		-f app/springboot/$(APPNAME)/deployment/$(APPNAME)/values-local.yaml
+		-f app/springboot/$(APPNAME)/deployment/$(APPNAME)/values-dd.yaml
 
-uninstall-local:
+uninstall-docker-desktop:
 	helm -n datereporter-dev delete $(APPNAME);
 
 port-forward:
 	kubectl port-forward svc/$(APPNAME) 8080:8080
 
-infra-local:
-	cd infra/local ; \
+infra-docker-desktop:
+	cd infra/docker-desktop ; \
 	terraform init ; \
-	terraform apply -var-file=local.json;
+	terraform apply -var-file=docker-desktop.tfvars;
 
 chart-dependency-build:
 	for chart in $(CHARTS); do \
