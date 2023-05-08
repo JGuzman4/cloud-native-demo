@@ -864,7 +864,7 @@ grafana:
       # Sets the size limit of the alert sidecar emptyDir volume
       sizeLimit: {}
     dashboards:
-      enabled: false
+      enabled: true
       # Additional environment variables for the dashboards sidecar
       env: {}
       # Do not reprocess already processed unchanged resources on k8s API reconnect.
@@ -927,7 +927,7 @@ grafana:
       # Sets the size limit of the dashboard sidecar emptyDir volume
       sizeLimit: {}
     datasources:
-      enabled: false
+      enabled: true
       # Additional environment variables for the datasourcessidecar
       env: {}
       # Do not reprocess already processed unchanged resources on k8s API reconnect.
