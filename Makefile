@@ -2,7 +2,9 @@ APPNAME := datereporter
 CHARTS := \
 			istio-base \
 			istio-istiod \
-			istio-gateway
+			istio-gateway \
+			flagger \
+			prometheus
 
 build:
 	cd app/springboot/datereporter ; \
@@ -21,7 +23,7 @@ uninstall-local:
 port-forward:
 	kubectl port-forward svc/$(APPNAME) 8080:8080
 
-infra-local: chart-dependency-build
+infra-local:
 	cd infra/local ; \
 	terraform init ; \
 	terraform apply -var-file=local.json;

@@ -1,0 +1,9 @@
+apiVersion: v2
+name: flagger
+description: A Helm chart for flagger
+version: 0.1.0
+
+dependencies:
+  - name: flagger
+    version: "1.30.0"
+    repository: "https://flagger.app"

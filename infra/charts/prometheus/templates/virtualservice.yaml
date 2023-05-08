@@ -1,0 +1,21 @@
+{{- if .Values.istio.enabled }}
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: prometheus-server-vs
+spec:
+  hosts:
+    - prometheus.local.domain
+  gateways:
+  - prometheus-server
+  http:
+    - name: prometheus-server
+      match:
+        - uri:
+            prefix: "/"
+      route:
+        - destination:
+            host: prometheus-server
+            port:
+              number: 80
+{{- end }}

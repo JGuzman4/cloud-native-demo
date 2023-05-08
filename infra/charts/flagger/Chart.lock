@@ -1,0 +1,6 @@
+dependencies:
+- name: flagger
+  repository: https://flagger.app
+  version: 1.30.0
+digest: sha256:18e088abe458af8fe06686c466a9625a0306000a74f82af84c4f194b21a6fd4d
+generated: "2023-05-07T21:54:12.715426-07:00"

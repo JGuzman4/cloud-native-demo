@@ -18,3 +18,22 @@ resource "kubernetes_namespace" "datereporter_dev" {
     }
   }
 }
+
+
+resource "kubernetes_namespace" "platform" {
+  metadata {
+    name = "platform"
+    labels = {
+      istio-injection = var.istio_sidecar
+    }
+  }
+}
+
+module "prometheus" {
+  source     = "../modules/prometheus"
+  enabled    = var.prometheus_enabled
+  values     = var.prometheus_values
+  chart      = var.prometheus_chart
+  namespace  = kubernetes_namespace.platform.metadata[0].name
+  depends_on = [module.istio]
+}
