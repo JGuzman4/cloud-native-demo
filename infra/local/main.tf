@@ -37,3 +37,11 @@ module "prometheus" {
   namespace  = kubernetes_namespace.platform.metadata[0].name
   depends_on = [module.istio]
 }
+
+module "flagger" {
+  source     = "../modules/flagger"
+  enabled    = var.flagger_enabled
+  values     = var.flagger_values
+  chart      = var.flagger_chart
+  depends_on = [module.prometheus]
+}

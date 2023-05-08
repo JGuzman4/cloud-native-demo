@@ -39,3 +39,16 @@ variable "prometheus_values" {
 variable "prometheus_chart" {
   default = null
 }
+
+### Flagger ###
+variable "flagger_enabled" {
+  default = false
+}
+
+variable "flagger_values" {
+  default = null
+}
+
+variable "flagger_chart" {
+  default = null
+}

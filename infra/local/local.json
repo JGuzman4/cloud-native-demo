@@ -1,7 +1,8 @@
 {
   "istio_enabled": false,
   "istio_gateway_enabled": false,
-  "istio_sidecar": "enabled",
+  "prometheus_enabled": false,
+  "flagger_enabled": false,
 
-  "prometheus_enabled": false
+  "istio_sidecar": "enabled"
 }
