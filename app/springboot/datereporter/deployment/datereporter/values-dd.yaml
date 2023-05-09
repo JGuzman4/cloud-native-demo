@@ -11,5 +11,9 @@ autoscaling:
 
 istio:
   enabled: true
-  hosts:
-    - datereporter.local.domain
+
+hosts:
+  - datereporter.local.domain
+
+canary:
+  enabled: true

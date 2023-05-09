@@ -83,6 +83,8 @@ kiali-server:
       enabled: true
     istio:
       root_namespace: ""
+    prometheus:
+      url: "http://prometheus-server/"
 
   identity:
     {}

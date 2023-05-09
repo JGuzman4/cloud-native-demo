@@ -11,7 +11,7 @@ spec:
         number: 80
         name: http
         protocol: HTTP
-      {{- with .Values.istio.hosts }}
+      {{- with .Values.hosts }}
       hosts:
         {{- toYaml . | nindent 8 }}
       {{- end }}

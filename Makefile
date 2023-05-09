@@ -36,6 +36,15 @@ chart-dependency-build:
 		cd -; \
 	done ;
 
+kiali-token:
+	kubectl -n platform create token kiali | pbcopy
+
+load-test-docker-desktop:
+	export DATEREPORTER_URL="http://datereporter.local.domain"; \
+	cd test; \
+	npm install; \
+	k6 run test.js
+
 clean:
 	helm -n datereporter-dev delete $(APPNAME) || true;
 	docker image rm -f $(APPNAME) || true;
