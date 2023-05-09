@@ -4,6 +4,7 @@ A demonstration for a blue/green deployment using cloud native technologies.
 
 ### prerequisites
 
+- [Java 17](https://openjdk.org/projects/jdk/17/)
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 - [kubectl](https://kubernetes.io/docs/tasks/tools/)
 - [helm](https://helm.sh/docs/intro/install/)
