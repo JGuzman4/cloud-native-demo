@@ -93,3 +93,20 @@ The cluster services are deployed using Terraform. The list of available TF vars
 | prometheus_enabled    | Flag for Prometheus deployment                              |
 | prometheus_values     | Path to a values override yaml file.                        |
 | prometheus_chart      | Path to a chart directory.                                  |
+
+## Roadmap
+
+- [x] Demo application
+- [x] Istio install locally
+- [x] Prometheus install locally
+- [x] Kiali install locally
+- [x] Flagger install locally
+- [x] Grafana install locally
+- [x] Grafana dashboards and datasources IaC
+- [ ] Prometheus Dashboard in Grafana
+- [x] blue/green deployment
+- [ ] Jenkins CI for steps
+- [ ] AWS EKS Cluster
+- [ ] Swap Terraform for ArgoCD
+- [ ] External DNS install in EKS
+- [ ] Cert-manager install in EKS
