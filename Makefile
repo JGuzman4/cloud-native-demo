@@ -9,7 +9,7 @@ CHARTS := \
 			kiali \
 			prometheus
 
-all: infra-docker-desktop docker-build-deploy
+all: chart-dependency-build infra-docker-desktop docker-build-deploy
 
 docker-build-deploy:
 	cd app/springboot/datereporter ; \
