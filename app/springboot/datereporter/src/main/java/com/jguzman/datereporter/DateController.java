@@ -17,14 +17,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class DateController {
 
   private Date date = new Date();
-  private String environment = System.getenv("ENVIRONMENT");
 
   @RequestMapping(value = "/", method = RequestMethod.GET)
   public JSONObject getDate() {
     JSONObject resp = new JSONObject();
 
     resp.put("date", date.toString());
-    resp.put("environment", environment);
+    resp.put("message", "hello world");
     return resp;
   }
 }

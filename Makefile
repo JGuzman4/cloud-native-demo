@@ -1,3 +1,4 @@
+TAG ?= v1
 APPNAME := datereporter
 CHARTS := \
 			istio-base \
@@ -8,10 +9,17 @@ CHARTS := \
 			kiali \
 			prometheus
 
-build:
+all: infra-docker-desktop docker-build-deploy
+
+docker-build-deploy:
 	cd app/springboot/datereporter ; \
 	./gradlew clean build ; \
-	docker build -t $(APPNAME) .
+	docker build -t $(APPNAME):$(TAG) .;
+	helm upgrade -i \
+		-n datereporter-dev \
+		$(APPNAME) app/springboot/$(APPNAME)/deployment/$(APPNAME) \
+		-f app/springboot/$(APPNAME)/deployment/$(APPNAME)/values-dd.yaml \
+		--set image.tag=$(TAG)
 
 install-docker-desktop:
 	helm upgrade -i \
@@ -38,6 +46,9 @@ chart-dependency-build:
 
 kiali-token:
 	kubectl -n platform create token kiali | pbcopy
+
+grafana-password:
+	kubectl -n platform get secret grafana -o jsonpath="{.data.admin-password}" | base64 -D | pbcopy
 
 load-test-docker-desktop:
 	export DATEREPORTER_URL="http://datereporter.local.domain"; \

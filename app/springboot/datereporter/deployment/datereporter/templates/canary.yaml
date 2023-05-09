@@ -4,7 +4,6 @@ kind: Canary
 metadata:
   name: {{ include "datereporter.fullname" . }}
 spec:
-  provider: istio
   targetRef:
     apiVersion: apps/v1
     kind: Deployment
@@ -30,11 +29,14 @@ spec:
     {{- end }}
   analysis:
     # schedule interval (default 60s)
-    interval: 30s
+    interval: {{ .Values.canary.analysis.interval }}
     # max number of failed checks before rollback
-    threshold: 2
+    threshold: {{ .Values.canary.analysis.threshold }}
     # number of checks to run before rollback
-    iterations: 10
+    maxWeight: {{ .Values.canary.analysis.maxWeight }}
+    # canary increment step
+    # percentage (0-100)
+    stepWeight: {{ .Values.canary.analysis.stepWeight }}
     # Prometheus checks based on 
     # http_request_duration_seconds histogram
     metrics:
@@ -43,11 +45,5 @@ spec:
         # percentage (0-100)
         thresholdRange:
           min: 99
-        interval: 1m
-      - name: request-duration
-        # maximum req duration P99
-        # milliseconds
-        thresholdRange:
-          max: 500
-        interval: 30s
+        interval: 5m
 {{- end }}

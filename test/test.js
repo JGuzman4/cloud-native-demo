@@ -2,8 +2,8 @@ import http from "k6/http";
 import { Rate, Trend } from "k6/metrics";
 
 export let options = {
-  vus: __ENV.LOAD_TEST_VUS || 10, // number of virtual users
-  duration: "30s", // duration of the test
+  vus: __ENV.LOAD_TEST_VUS || 2, // number of virtual users
+  duration: "600s", // duration of the test
 };
 
 // track success rate

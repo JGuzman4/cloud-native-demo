@@ -17,3 +17,8 @@ hosts:
 
 canary:
   enabled: true
+  analysis:
+    interval: 60s
+    threshold: 3
+    maxWeight: 100
+    stepWeight: 100
