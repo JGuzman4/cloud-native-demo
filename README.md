@@ -19,7 +19,6 @@ The local demo uses Kubernetes through Docker Desktop. Once Docker is running, y
 
 ```
 127.0.0.1 datereporter.local.domain
-127.0.0.1 productpage.local.domain
 127.0.0.1 prometheus.local.domain
 127.0.0.1 grafana.local.domain
 127.0.0.1 kiali.local.domain
