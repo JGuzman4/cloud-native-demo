@@ -66,3 +66,6 @@ grafana-password:
 
 argocd-password:
 	kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -D | pbcopy
+
+jenkins-password:
+	kubectl -n platform get secret jenkins -o jsonpath="{.data.jenkins-admin-password}" | base64 -D | pbcopy
