@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: jenkins-vs
+spec:
+  hosts:
+    - jenkins.local.domain
+  gateways:
+    - jenkins
+  http:
+    - name: jenkins
+      match:
+        - uri:
+            prefix: "/"
+      route:
+        - destination:
+            host: jenkins
+            port:
+              number: 8080

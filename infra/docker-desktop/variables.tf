@@ -1,3 +1,16 @@
+### Argocd ###
+variable "argocd_enabled" {
+  default = false
+}
+
+variable "argocd_values" {
+  default = null
+}
+
+variable "argocd_chart" {
+  default = null
+}
+
 ### Istio ###
 variable "istio_enabled" {
   default = false
@@ -50,6 +63,19 @@ variable "grafana_values" {
 }
 
 variable "grafana_chart" {
+  default = null
+}
+
+### Jenkins ###
+variable "jenkins_enabled" {
+  default = false
+}
+
+variable "jenkins_values" {
+  default = null
+}
+
+variable "jenkins_chart" {
   default = null
 }
 

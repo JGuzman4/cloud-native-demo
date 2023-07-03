@@ -1,0 +1,11 @@
+{{- if .Values.istio.enabled }}
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: argocd-server-dr
+spec:
+  host: argocd-server
+  trafficPolicy:
+    tls:
+      mode: DISABLE
+{{- end }}

@@ -16,6 +16,13 @@ resource "kubernetes_namespace" "platform" {
   }
 }
 
+module "argocd" {
+  source  = "../modules/argocd"
+  enabled = var.argocd_enabled
+  values  = var.argocd_values
+  chart   = var.argocd_chart
+}
+
 module "istio" {
   source          = "../modules/istio"
   enabled         = var.istio_enabled
@@ -52,6 +59,15 @@ module "grafana" {
   chart      = var.grafana_chart
   namespace  = kubernetes_namespace.platform.metadata[0].name
   depends_on = [module.prometheus]
+}
+
+module "jenkins" {
+  source     = "../modules/jenkins"
+  enabled    = var.jenkins_enabled
+  values     = var.jenkins_values
+  chart      = var.jenkins_chart
+  namespace  = kubernetes_namespace.platform.metadata[0].name
+  depends_on = [module.istio]
 }
 
 module "kiali" {

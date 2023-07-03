@@ -1,11 +1,13 @@
 TAG ?= v1
 APPNAME := datereporter
 CHARTS := \
+			argocd \
 			istio-base \
 			istio-istiod \
 			istio-gateway \
 			flagger \
 			grafana \
+			jenkins \
 			kiali \
 			prometheus
 
@@ -44,12 +46,6 @@ chart-dependency-build:
 		cd -; \
 	done ;
 
-kiali-token:
-	kubectl -n platform create token kiali | pbcopy
-
-grafana-password:
-	kubectl -n platform get secret grafana -o jsonpath="{.data.admin-password}" | base64 -D | pbcopy
-
 load-test-docker-desktop:
 	export DATEREPORTER_URL="http://datereporter.local.domain"; \
 	cd test; \
@@ -61,3 +57,12 @@ clean:
 	docker image rm -f $(APPNAME) || true;
 	cd app/springboot/datereporter ; \
 	./gradlew clean ;
+
+kiali-token:
+	kubectl -n platform create token kiali | pbcopy
+
+grafana-password:
+	kubectl -n platform get secret grafana -o jsonpath="{.data.admin-password}" | base64 -D | pbcopy
+
+argocd-password:
+	kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -D | pbcopy
