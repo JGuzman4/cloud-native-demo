@@ -1,0 +1,4 @@
+apiVersion: v2
+name: istio
+description: A Helm chart for istio base resources as ArgoCD applications
+version: 0.1.0

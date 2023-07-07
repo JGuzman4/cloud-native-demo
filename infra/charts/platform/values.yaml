@@ -1,0 +1,19 @@
+argoNamespace: argocd
+spec:
+  destination:
+    server: "https://kubernetes.default.svc"
+
+flagger:
+  enabled: true
+
+grafana:
+  enabled: true
+
+jenkins:
+  enabled: true
+
+kiali:
+  enabled: true
+
+prometheus:
+  enabled: true

@@ -11,7 +11,7 @@ CHARTS := \
 			kiali \
 			prometheus
 
-all: chart-dependency-build infra-docker-desktop docker-build-deploy
+all: chart-dependency-build infra-tf docker-build-deploy
 
 docker-build-deploy:
 	cd app/springboot/datereporter ; \
@@ -35,10 +35,25 @@ uninstall-docker-desktop:
 port-forward:
 	kubectl port-forward svc/$(APPNAME) 8080:8080
 
-infra-docker-desktop:
-	cd infra/docker-desktop ; \
+infra-tf:
+	cd infra/docker-desktop/tf ; \
 	terraform init ; \
-	terraform apply -var-file=docker-desktop.tfvars;
+	terraform apply -var-file=inputs.tfvars;
+
+destroy-tf:
+	cd infra/docker-desktop/tf ; \
+	terraform init ; \
+	terraform destroy -var-file=inputs.tfvars;
+
+infra-argocd:
+	cd infra/docker-desktop/argocd ; \
+	terraform init ; \
+	terraform apply -var-file=inputs.tfvars;
+
+destroy-argocd:
+	cd infra/docker-desktop/argocd ; \
+	terraform init ; \
+	terraform destroy -var-file=inputs.tfvars;
 
 chart-dependency-build:
 	for chart in $(CHARTS); do \

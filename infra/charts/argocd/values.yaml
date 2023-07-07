@@ -1,5 +1,5 @@
 istio:
-  enabled: true
+  enabled: false
 
 argo-cd:
   ## Argo CD configuration

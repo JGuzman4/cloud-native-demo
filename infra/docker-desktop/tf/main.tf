@@ -17,14 +17,14 @@ resource "kubernetes_namespace" "platform" {
 }
 
 module "argocd" {
-  source  = "../modules/argocd"
+  source  = "../../modules/argocd"
   enabled = var.argocd_enabled
   values  = var.argocd_values
   chart   = var.argocd_chart
 }
 
 module "istio" {
-  source          = "../modules/istio"
+  source          = "../../modules/istio"
   enabled         = var.istio_enabled
   gateway_enabled = var.istio_gateway_enabled
   gateway_values  = var.istio_gateway_values
@@ -36,7 +36,7 @@ module "istio" {
 }
 
 module "prometheus" {
-  source     = "../modules/prometheus"
+  source     = "../../modules/prometheus"
   enabled    = var.prometheus_enabled
   values     = var.prometheus_values
   chart      = var.prometheus_chart
@@ -45,7 +45,7 @@ module "prometheus" {
 }
 
 module "flagger" {
-  source     = "../modules/flagger"
+  source     = "../../modules/flagger"
   enabled    = var.flagger_enabled
   values     = var.flagger_values
   chart      = var.flagger_chart
@@ -53,7 +53,7 @@ module "flagger" {
 }
 
 module "grafana" {
-  source     = "../modules/grafana"
+  source     = "../../modules/grafana"
   enabled    = var.grafana_enabled
   values     = var.grafana_values
   chart      = var.grafana_chart
@@ -62,7 +62,7 @@ module "grafana" {
 }
 
 module "jenkins" {
-  source     = "../modules/jenkins"
+  source     = "../../modules/jenkins"
   enabled    = var.jenkins_enabled
   values     = var.jenkins_values
   chart      = var.jenkins_chart
@@ -71,7 +71,7 @@ module "jenkins" {
 }
 
 module "kiali" {
-  source     = "../modules/kiali"
+  source     = "../../modules/kiali"
   enabled    = var.kiali_enabled
   values     = var.kiali_values
   chart      = var.kiali_chart

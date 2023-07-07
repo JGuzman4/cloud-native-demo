@@ -1,0 +1,4 @@
+apiVersion: v2
+name: platform
+description: A Helm chart for cluster services to be installed using ArgoCD
+version: 0.1.0

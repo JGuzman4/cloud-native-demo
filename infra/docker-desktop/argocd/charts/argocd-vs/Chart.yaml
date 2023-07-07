@@ -1,0 +1,4 @@
+apiVersion: v2
+name: argocd-vs
+description: A Helm chart for argocd virtual service resources
+version: 0.1.0

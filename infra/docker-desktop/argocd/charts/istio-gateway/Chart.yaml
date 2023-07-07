@@ -1,0 +1,4 @@
+apiVersion: v2
+name: istio-gateway
+description: A Helm chart for istio gateway resources as ArgoCD applications
+version: 0.1.0
