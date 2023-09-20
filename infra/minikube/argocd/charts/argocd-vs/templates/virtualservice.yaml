@@ -2,20 +2,20 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: jenkins-vs
+  name: argocd-vs
 spec:
   hosts:
-    - jenkins.local.domain
+    - argocd.local.domain
   gateways:
-    - jenkins
+  - argocd
   http:
-    - name: jenkins
+    - name: argocd
       match:
         - uri:
             prefix: "/"
       route:
         - destination:
-            host: jenkins
+            host: argocd-server
             port:
-              number: 8080
+              number: 80
 {{- end }}

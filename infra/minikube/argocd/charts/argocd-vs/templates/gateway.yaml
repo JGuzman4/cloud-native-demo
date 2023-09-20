@@ -2,7 +2,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: jenkins
+  name: argocd
 spec:
   selector:
     istio: gateway
@@ -12,5 +12,5 @@ spec:
         name: http
         protocol: HTTP
       hosts:
-        - jenkins.local.domain
+        - argocd.local.domain
 {{- end }}

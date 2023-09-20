@@ -1,0 +1,27 @@
+---
+#---
+#apiVersion: v1
+#kind: PersistentVolume
+#metadata:
+#  name: jenkins-pv
+#spec:
+#  storageClassName: jenkins-pv
+#  accessModes:
+#    - ReadWriteOnce
+#  capacity:
+#    storage: 6Gi
+#  hostPath:
+#    path: /var/jenkins_home/
+#---
+#apiVersion: v1
+#kind: PersistentVolumeClaim
+#metadata:
+#  annotations:
+#  name: jenkins-pvc
+#spec:
+#  storageClassName: jenkins-pv
+#  accessModes:
+#    - ReadWriteOnce
+#  resources:
+#    requests:
+#      storage: 2Gi

@@ -1,4 +1,5 @@
 TAG ?= v1
+KUBECONTEXT ?= docker-desktop
 APPNAME := datereporter
 CHARTS := \
 			argocd \
@@ -36,12 +37,12 @@ port-forward:
 	kubectl port-forward svc/$(APPNAME) 8080:8080
 
 infra-tf:
-	cd infra/docker-desktop/tf ; \
+	cd infra/$(KUBECONTEXT)/tf ; \
 	terraform init ; \
 	terraform apply -var-file=inputs.tfvars;
 
 destroy-tf:
-	cd infra/docker-desktop/tf ; \
+	cd infra/$(KUBECONTEXT)/tf ; \
 	terraform init ; \
 	terraform destroy -var-file=inputs.tfvars;
 
@@ -83,4 +84,4 @@ argocd-password:
 	kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -D | pbcopy
 
 jenkins-password:
-	kubectl -n platform get secret jenkins -o jsonpath="{.data.jenkins-admin-password}" | base64 -D | pbcopy
+	kubectl -n jenkins get secret jenkins -o jsonpath="{.data.jenkins-admin-password}" | base64 -D | pbcopy

@@ -2,10 +2,10 @@ variable "enabled" {
   default = true
 }
 variable "values" {
-  type = list
+  default = null
 }
 variable "chart" {
-  type = string
+  default = null
 }
 #variable "ha" {
 #  default = false

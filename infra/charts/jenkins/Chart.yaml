@@ -5,5 +5,5 @@ version: 0.1.0
 
 dependencies:
   - name: jenkins
-    version: "4.3.29"
+    version: "4.6.4"
     repository: "https://charts.jenkins.io"

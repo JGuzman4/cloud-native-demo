@@ -1,6 +1,6 @@
 argocd_enabled        = false
-istio_enabled         = true
-istio_gateway_enabled = true
+istio_enabled         = false
+istio_gateway_enabled = false
 flagger_enabled       = false
 grafana_enabled       = false
 jenkins_enabled       = true
