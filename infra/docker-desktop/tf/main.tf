@@ -23,6 +23,13 @@ module "argocd" {
   chart   = var.argocd_chart
 }
 
+module "consul" {
+  source  = "../../modules/consul"
+  enabled = var.consul_enabled
+  values  = var.consul_values
+  chart   = var.consul_chart
+}
+
 module "istio" {
   source          = "../../modules/istio"
   enabled         = var.istio_enabled
@@ -77,4 +84,11 @@ module "kiali" {
   chart      = var.kiali_chart
   namespace  = kubernetes_namespace.platform.metadata[0].name
   depends_on = [module.istio]
+}
+
+module "vault" {
+  source  = "../../modules/vault"
+  enabled = var.vault_enabled
+  values  = var.vault_values
+  chart   = var.vault_chart
 }

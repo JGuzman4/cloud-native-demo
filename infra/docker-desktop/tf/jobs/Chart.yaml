@@ -1,0 +1,4 @@
+apiVersion: v2
+name: jenkins-jobs
+description: A Helm chart for jenkins jobs
+version: 0.1.0

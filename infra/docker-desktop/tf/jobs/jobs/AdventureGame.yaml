@@ -1,0 +1,27 @@
+jobs:
+  - script: >
+      folder('jobs')
+  - script: >
+      pipelineJob('jobs/AdventureGame') {
+        definition {
+          cps {
+            script("""
+              pipeline {
+                agent {
+                  kubernetes {
+                    inheritFrom 'python'
+                  }
+                }
+                stages {
+                  stage('Run python') {
+                    steps {
+                      container('python') {
+                        sh 'python --version'
+                      }
+                    }
+                  }
+                }
+              }""".stripIndent())
+          }
+        }
+      }

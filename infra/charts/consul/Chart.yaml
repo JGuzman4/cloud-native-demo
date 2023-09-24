@@ -1,0 +1,9 @@
+apiVersion: v2
+name: consul
+description: A Helm chart for consul
+version: 0.1.0
+
+dependencies:
+  - name: consul
+    version: "1.2.1"
+    repository: "https://helm.releases.hashicorp.com"

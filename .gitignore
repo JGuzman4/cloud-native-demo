@@ -29,3 +29,6 @@ terraform.rc
 *.tgz
 
 node_modules/
+
+*.pem
+*.csr

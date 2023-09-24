@@ -37,7 +37,7 @@ jenkins:
     #      command:
     #      - "uname"
     #      - "-a"
-    disableRememberMe: false
+    disableRememberMe: true
     numExecutors: 0
     # configures the executor mode of the Jenkins node. Possible values are: NORMAL or EXCLUSIVE
     executorMode: "NORMAL"
@@ -207,7 +207,7 @@ jenkins:
       - JNLP2-connect
     csrf:
       defaultCrumbIssuer:
-        enabled: true
+        enabled: false
         proxyCompatability: true
     # Kubernetes service type for the JNLP agent service
     # agentListenerServiceType is the Kubernetes Service type for the JNLP agent service,
@@ -251,7 +251,8 @@ jenkins:
       - kubernetes:4029.v5712230ccb_f8
       - workflow-aggregator:596.v8c21c963d92d
       - git:5.1.0
-      - configuration-as-code:1670.v564dc8b_982d0
+      - configuration-as-code:1700.v6f448841296e
+      - job-dsl:1.85
 
     # Set to false to download the minimum required version of all dependencies.
     installLatestPlugins: true
@@ -356,7 +357,7 @@ jenkins:
       # Ignored if authorizationStrategy is defined in controller.JCasC.configScripts
       authorizationStrategy: |-
         loggedInUsersCanDoAnything:
-          allowAnonymousRead: false
+          allowAnonymousRead: true
     # Optionally specify additional init-containers
     customInitContainers: []
     # - name: custom-init

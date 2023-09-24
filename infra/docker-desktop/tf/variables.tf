@@ -11,6 +11,19 @@ variable "argocd_chart" {
   default = null
 }
 
+### Consul ###
+variable "consul_enabled" {
+  default = false
+}
+
+variable "consul_values" {
+  default = null
+}
+
+variable "consul_chart" {
+  default = null
+}
+
 ### Istio ###
 variable "istio_enabled" {
   default = false
@@ -102,5 +115,18 @@ variable "prometheus_values" {
 }
 
 variable "prometheus_chart" {
+  default = null
+}
+
+### Vault ###
+variable "vault_enabled" {
+  default = false
+}
+
+variable "vault_values" {
+  default = null
+}
+
+variable "vault_chart" {
   default = null
 }

@@ -1,0 +1,16 @@
+{{- if .Values.istio.enabled }}
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: vault
+spec:
+  selector:
+    istio: vault
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      hosts:
+        - vault.local.domain
+{{- end }}

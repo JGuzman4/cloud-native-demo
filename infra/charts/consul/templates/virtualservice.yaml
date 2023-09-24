@@ -1,0 +1,21 @@
+{{- if .Values.istio.enabled }}
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: consul-vs
+spec:
+  hosts:
+    - consul.local.domain
+  gateways:
+  - consul
+  http:
+    - name: consul
+      match:
+        - uri:
+            prefix: "/"
+      route:
+        - destination:
+            host: consul-consul-server
+            port:
+              number: 8500
+{{- end }}

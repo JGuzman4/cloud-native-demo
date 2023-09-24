@@ -18,7 +18,7 @@ export let ttlb = new Trend("ttlb");
 export default function () {
   const start = new Date().getTime();
 
-  const res = http.get(__ENV.DATEREPORTER_URL);
+  const res = http.get(__ENV.APP_URL);
 
   const end = new Date().getTime();
   const duration = end - start;

@@ -1,0 +1,12 @@
+{{- $files := .Files }}
+{{- range $job := .Values.jobs }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jenkins-job-{{ $job.name }}
+  labels:
+    jenkins-jenkins-config: "true"
+data:
+  job.yaml: |-
+{{ $files.Get $job.cascFile | indent 4 }}
+{{- end }}
