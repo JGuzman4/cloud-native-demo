@@ -5,17 +5,17 @@ ORCHESTRATION ?= tf
 APPNAME ?= datereporter
 APP_URL ?= http://datereporter.local.domain
 CHARTS ?= \
-			argocd \
-			consul \
-			istio-base \
-			istio-istiod \
-			istio-gateway \
-			flagger \
-			grafana \
-			jenkins \
-			kiali \
-			prometheus \
-			vault
+	argocd \
+	consul \
+	istio-base \
+	istio-istiod \
+	istio-gateway \
+	flagger \
+	grafana \
+	jenkins \
+	kiali \
+	prometheus \
+	vault
 
 default: help
 
@@ -97,6 +97,11 @@ vault-unseal: # unseal vault
 		-format=json > infra/key-management/cluster-keys.json ;
 	kubectl exec -n platform vault-0 -- \
 		vault operator unseal $$(cat infra/key-management/cluster-keys.json | jq -r ".unseal_keys_b64[]") ;
+
+vault-configure: # enable v2 secrets engine
+	export VAULT_ADDR=http://vault.local.domain ; \
+	vault login $$(cat infra/key-management/cluster-keys.json | jq -r ".root_token") ; \
+	vault secrets enable -version=2 kv ;
 
 jenkins-jobs: # deploy jobs to jenkins usinc CasC
 	helm upgrade -i -n platform jenkins-jobs infra/$(KUBECONTEXT)/tf/jobs ;
