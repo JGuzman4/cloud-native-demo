@@ -3,7 +3,7 @@ resource "helm_release" "kiali" {
   name       = "kiali-server"
   namespace  = var.namespace
   chart      = var.chart == null ? "${path.module}/../../charts/kiali" : var.chart
-  timeout    = 600
+  timeout    = 240
 
   values = try([file("${var.values}")], [])
 }

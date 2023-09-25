@@ -130,6 +130,10 @@ clean-vault: # destroy consul ca resources
 	rm -rf infra/key-management/certs/vault*.pem infra/key-management/certs/vault*.csr ;
 	rm -rf infra/key-management/cluster-keys.json ;
 
+clean-certs: # destroy ca resources
+	rm -rf infra/key-management/certs/*.pem infra/key-management/certs/*.csr ;
+	rm -rf infra/key-management/cluster-keys.json ;
+
 clean-infra: # clean terraform state and cache
 	rm -rf infra/$(KUBECONTEXT)/tf/.terraform ;
 	rm -rf infra/$(KUBECONTEXT)/tf/terraform.state* ;

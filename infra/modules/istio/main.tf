@@ -14,7 +14,7 @@ resource "helm_release" "istio_base" {
   name       = "istio-base"
   namespace  = kubernetes_namespace.istio_ns[0].metadata[0].name
   chart      = var.base_chart == null ? "${path.module}/../../charts/istio-base" : var.base_chart
-  timeout    = 600
+  timeout    = 240
 
   values = try([file("${var.base_values}")], [])
 }
@@ -24,7 +24,7 @@ resource "helm_release" "istiod" {
   name       = "istiod"
   namespace  = kubernetes_namespace.istio_ns[0].metadata[0].name
   chart      = var.istiod_chart == null ? "${path.module}/../../charts/istio-istiod" : var.istiod_chart
-  timeout    = 600
+  timeout    = 240
 
   values = try([file("${var.istiod_values}")], [])
 
@@ -51,7 +51,7 @@ resource "helm_release" "istio_gateway" {
   name       = "istio-gateway"
   namespace  = kubernetes_namespace.istio_ingress_ns[0].metadata[0].name
   chart      = var.gateway_chart == null ? "${path.module}/../../charts/istio-gateway" : var.gateway_chart
-  timeout    = 600
+  timeout    = 240
 
   values = try([file("${var.gateway_values}")], [])
 

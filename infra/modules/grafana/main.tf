@@ -3,7 +3,7 @@ resource "helm_release" "grafana" {
   name       = "grafana"
   namespace  = var.namespace
   chart      = var.chart == null ? "${path.module}/../../charts/grafana" : var.chart
-  timeout    = 600
+  timeout    = 240
 
   values = try([file("${var.values}")], [])
 }

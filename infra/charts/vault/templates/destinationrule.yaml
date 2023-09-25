@@ -1,0 +1,11 @@
+{{- if .Values.istio.enabled }}
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: vault-dr
+spec:
+  host: vault-ui
+  trafficPolicy:
+    tls:
+      mode: DISABLE
+{{- end }}

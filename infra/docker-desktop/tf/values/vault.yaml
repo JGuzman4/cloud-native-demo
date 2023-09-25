@@ -1,5 +1,5 @@
 istio:
-  enabled: false
+  enabled: true
 
 vault:
   # Copyright (c) HashiCorp, Inc.
@@ -878,9 +878,8 @@ vault:
         ui = true
 
         listener "tcp" {
-          tls_disable = 1
-          address = "[::]:8200"
-          cluster_address = "[::]:8201"
+          tls_disable = "true"
+          address = "0.0.0.0:8200"
         }
         storage "consul" {
           path = "vault"
@@ -972,7 +971,7 @@ vault:
     # serviceType can be used to control the type of service created. For
     # example, setting this to "LoadBalancer" will create an external load
     # balancer (for supported K8S installations) to access the UI.
-    enabled: false
+    enabled: true
     publishNotReadyAddresses: true
     # The service should only contain selectors for active Vault pod
     activeVaultPodOnly: false

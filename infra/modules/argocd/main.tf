@@ -14,7 +14,7 @@ resource "helm_release" "argocd" {
   name       = "argocd"
   namespace  = kubernetes_namespace.argocd[0].id
   chart      = var.chart == null ? "${path.module}/../../charts/argocd" : var.chart
-  timeout    = "600"
+  timeout    = "240"
 
   values = try([file("${var.values}")], [])
 }
