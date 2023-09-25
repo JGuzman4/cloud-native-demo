@@ -1,5 +1,5 @@
 argocd_enabled        = false
-consul_enabled        = true
+consul_enabled        = false
 istio_enabled         = true
 istio_gateway_enabled = true
 flagger_enabled       = false

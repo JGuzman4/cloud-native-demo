@@ -820,8 +820,8 @@ vault:
     # Helm project by default.  It is possible to manually configure Vault to use a
     # different HA backend.
     ha:
-      enabled: false
-      replicas: 3
+      enabled: true
+      replicas: 1
 
       # Set the api_addr configuration for Vault HA
       # See https://www.vaultproject.io/docs/configuration#api_addr
@@ -884,7 +884,7 @@ vault:
         }
         storage "consul" {
           path = "vault"
-          address = "HOST_IP:8500"
+          address = "consul-consul-server:8500"
         }
 
         service_registration "kubernetes" {}
