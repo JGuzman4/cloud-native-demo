@@ -1,0 +1,13 @@
+{{- $files := .Files }}
+{{- range $key, $value := .Values.cascs }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jenkins-{{ $value.name }}
+  labels:
+    jenkins-jenkins-config: "true"
+data:
+  {{ $value.name }}.yaml: |-
+{{ $files.Get $value.cascFile | indent 4 }}
+{{ end }}

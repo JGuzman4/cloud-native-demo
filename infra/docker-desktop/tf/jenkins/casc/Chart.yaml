@@ -1,0 +1,4 @@
+apiVersion: v2
+name: jenkins-casc
+description: A Helm chart for jenkins casc config maps
+version: 0.1.0

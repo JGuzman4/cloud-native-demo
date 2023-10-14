@@ -1,3 +1,0 @@
-jobs:
-  - name: adventure-game
-    cascFile: jobs/AdventureGame.yaml

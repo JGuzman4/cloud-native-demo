@@ -1,0 +1,5 @@
+cascs:
+  - name: adventure-game
+    cascFile: jobs/AdventureGame.yaml
+  - name: jenkins-shared-library
+    cascFile: sharedlibraries/jenkins-shared-library.yaml

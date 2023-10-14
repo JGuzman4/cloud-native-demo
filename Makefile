@@ -103,8 +103,8 @@ vault-configure: # enable v2 secrets engine
 	vault login $$(cat infra/key-management/cluster-keys.json | jq -r ".root_token") ; \
 	vault secrets enable -version=2 kv ;
 
-jenkins-jobs: # deploy jobs to jenkins usinc CasC
-	helm upgrade -i -n platform jenkins-jobs infra/$(KUBECONTEXT)/tf/jobs ;
+jenkins-casc: # deploy jenkins config
+	helm upgrade -i -n platform jenkins-casc infra/$(KUBECONTEXT)/tf/jenkins/casc ;
 
 load-test: # run k6s load tests
 	cd test;
