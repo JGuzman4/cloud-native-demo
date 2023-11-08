@@ -79,6 +79,19 @@ variable "grafana_chart" {
   default = null
 }
 
+### Harbor ###
+variable "harbor_enabled" {
+  default = false
+}
+
+variable "harbor_values" {
+  default = null
+}
+
+variable "harbor_chart" {
+  default = null
+}
+
 ### Jenkins ###
 variable "jenkins_enabled" {
   default = false

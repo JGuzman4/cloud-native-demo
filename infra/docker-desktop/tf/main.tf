@@ -68,6 +68,15 @@ module "grafana" {
   depends_on = [module.prometheus]
 }
 
+module "harbor" {
+  source     = "../../modules/harbor"
+  enabled    = var.harbor_enabled
+  values     = var.harbor_values
+  chart      = var.harbor_chart
+  namespace  = kubernetes_namespace.platform.metadata[0].name
+  depends_on = [module.prometheus]
+}
+
 module "jenkins" {
   source     = "../../modules/jenkins"
   enabled    = var.jenkins_enabled

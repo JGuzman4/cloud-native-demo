@@ -12,6 +12,7 @@ CHARTS ?= \
 	istio-gateway \
 	flagger \
 	grafana \
+	harbor \
 	jenkins \
 	kiali \
 	prometheus \
@@ -113,6 +114,9 @@ load-test: # run k6s load tests
 
 password-grafana: # retrieve grafana admin password
 	kubectl -n platform get secret grafana -o jsonpath="{.data.admin-password}" | base64 -D | pbcopy ;
+
+password-harbor: # retrieve grafana admin password
+	kubectl -n platform get secret harbor-core -o jsonpath="{.data.HARBOR_ADMIN_PASSWORD}" | base64 -D | pbcopy ;
 
 password-argocd: # retrieve argocd password
 	kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -D | pbcopy ;
