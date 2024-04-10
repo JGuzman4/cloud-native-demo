@@ -38,11 +38,13 @@ deploy: build # deploy the app
 	helm upgrade -i \
 		-n $(APPNAME)-dev \
 		$(APPNAME) app/springboot/$(APPNAME)/deployment/$(APPNAME) \
-		-f app/springboot/$(APPNAME)/deployment/$(APPNAME)/values-dd.yaml
+		-f app/springboot/$(APPNAME)/deployment/$(APPNAME)/values-dd.yaml \
+		--set image.tag=$(TAG)
+
 
 uninstall: # tear down app 
-	helm -n $(APPNAME)-dev delete $(APPNAME);
-	docker image rm -f $(APPNAME) || true;
+	helm -n $(APPNAME)-dev delete $(APPNAME) || true;
+	docker image rm -f $(APPNAME):$(TAG) || true;
 	cd app/springboot/datereporter ; \
 	./gradlew clean ;
 
@@ -108,9 +110,9 @@ jenkins-casc: # deploy jenkins config
 	helm upgrade -i -n platform jenkins-casc infra/$(KUBECONTEXT)/tf/jenkins/casc ;
 
 load-test: # run k6s load tests
-	cd test;
-	npm install;
-	k6 run test.js ;
+	cd test; \
+	npm install; \
+	APP_URL=$(APP_URL) k6 run test.js ;
 
 password-grafana: # retrieve grafana admin password
 	kubectl -n platform get secret grafana -o jsonpath="{.data.admin-password}" | base64 -D | pbcopy ;

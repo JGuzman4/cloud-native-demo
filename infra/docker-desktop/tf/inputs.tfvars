@@ -1,13 +1,13 @@
 argocd_enabled        = false
 consul_enabled        = false
-istio_enabled         = false
-istio_gateway_enabled = false
-flagger_enabled       = false
+istio_enabled         = true
+istio_gateway_enabled = true
+flagger_enabled       = true
 grafana_enabled       = false
 harbor_enabled        = false
 jenkins_enabled       = false
-kiali_enabled         = false
-prometheus_enabled    = false
+kiali_enabled         = true
+prometheus_enabled    = true
 vault_enabled         = false
 
 argocd_values        = "./values/argocd.yaml"
