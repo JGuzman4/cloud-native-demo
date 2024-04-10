@@ -34,10 +34,10 @@ make
 
 #### Begin the load tests
 
-The load tests are executed using k6. If you have k6 installed, you can use the command
+The application will take a minute to deploy and become accessible. Once it is ready, we can begin the load testing. The load tests are executed using k6. If you have k6 installed, you can use the command
 
 ```bash
-make load-test-docker-desktop
+make load-test
 ```
 
 The tests will run 2 requests per second for 10 minutes.
@@ -55,7 +55,7 @@ Open the file in `app/springboot/datereporter/src/main/java/com/jguzman/daterepo
 redeploy the application using the command
 
 ```
-TAG=v2 make docker-build-deploy
+TAG=v2 make deploy
 ```
 
 ## Cluster Services
